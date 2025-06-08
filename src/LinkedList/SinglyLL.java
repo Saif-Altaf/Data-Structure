@@ -40,13 +40,24 @@ public class SinglyLL {
         size += 1;
     }
 
+    public void addLast(int val) {
+        Node node = new Node(val);
+        if (isEmpty()) {
+            head = tail = node;
+        } else {
+            tail.next = node;
+            tail = node;
+        }
+        size += 1;
+    }
+
     public void add(int val, int index) {
         if (index == 0) {
             addFirst(val);
             return;
         }
         if (index == size) {
-            // addLast(val);
+            addLast(val);
             return;
         }
         Node temp = head;
@@ -72,6 +83,38 @@ public class SinglyLL {
         size -= 1;
     }
 
+    public void deleteLast() {
+        if (head == tail) {
+            head = tail = null;
+            size -= 1;
+        } else {
+            Node temp = head;
+            for (int i = 1; i < size - 1; i++) {
+                temp = temp.next;
+            }
+            tail = temp;
+            tail.next = null;
+            size -= 1;
+        }
+    }
+
+    public void delete(int index) {
+        if (index == 0) {
+            deleteFirst();
+            return;
+        }
+        if (index == size) {
+            deleteLast();
+            return;
+        }
+        Node temp = head;
+        for (int i = 1; i < index; i++) {
+            temp = temp.next;
+        }
+        temp.next=temp.next.next;
+        size-=1;
+    }
+
     public int indexOf(int val) {
         Node temp = head;
         for (int i = 0; i < size; i++) {
@@ -83,9 +126,9 @@ public class SinglyLL {
         return -1;
     }
 
-//    public boolean contains(int val){
-//
-//    }
+    public boolean contains(int val) {
+        return indexOf(val) != -1;
+    }
 
     private boolean isEmpty() {
         return head == null;
