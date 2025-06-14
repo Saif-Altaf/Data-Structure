@@ -3,6 +3,7 @@ package LinkedList;
 public class CircularLL {
     private Node head;
     private Node tail;
+    private int size;
 
     private class Node {
         private int val;
@@ -23,11 +24,13 @@ public class CircularLL {
             Node node = new Node(val);
             if (isEmpty()) {
                 head = tail = node;
+                size++;
                 return;
             }
             node.next = head;
             tail.next = node;
             head = node;
+            size++;
         }
 
         public void delete(int val){
@@ -44,6 +47,7 @@ public class CircularLL {
                 Node after=temp.next;
                 if(after.val==val){
                     temp.next=after.next;
+                    size--;
                     break;
                 }
                 temp=temp.next;
