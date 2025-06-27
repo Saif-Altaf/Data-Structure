@@ -1,3 +1,4 @@
+package Queue;
 import java.util.ArrayDeque;
 import java.util.Queue;
 import java.util.Stack;
@@ -12,6 +13,11 @@ public class Main {
         System.out.println(q);
         reverse(q);
         System.out.println(q);
+
+        QueueUsingStack q2=new QueueUsingStack();
+        var first=q2.dequeue();
+
+        System.out.println(first);
 
     }
     public static void reverse(Queue<Integer> q){
