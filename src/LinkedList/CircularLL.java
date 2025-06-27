@@ -20,52 +20,52 @@ public class CircularLL {
             this.prev = prev;
         }
 
-        public void addFirst(int val) {
-            Node node = new Node(val);
-            if (isEmpty()) {
-                head = tail = node;
-                size++;
-                return;
-            }
-            node.next = head;
-            tail.next = node;
-            head = node;
+    }
+    public void addFirst(int val) {
+        Node node = new Node(val);
+        if (isEmpty()) {
+            head = tail = node;
             size++;
+            return;
         }
+        node.next = head;
+        tail.next = node;
+        head = node;
+        size++;
+    }
 
-        public void delete(int val){
-            Node temp=head;
-            if(temp==null){
-                return;
-            }
-            if(temp.val==val){
-               head=head.next;
-               tail.next=head;
-               return;
-            }
-            do{
-                Node after=temp.next;
-                if(after.val==val){
-                    temp.next=after.next;
-                    size--;
-                    break;
-                }
-                temp=temp.next;
-            }while (temp!=null);
+    public void delete(int val){
+        Node temp=head;
+        if(temp==null){
+            return;
         }
+        if(temp.val==val){
+            head=head.next;
+            tail.next=head;
+            return;
+        }
+        do{
+            Node after=temp.next;
+            if(after.val==val){
+                temp.next=after.next;
+                size--;
+                break;
+            }
+            temp=temp.next;
+        }while (temp!=null);
+    }
 
-        public void print() {
-            Node temp = head;
-            if (head != null) {
-                do {
-                    System.out.println(temp.val + "->");
-                    temp = temp.next;
-                }while(temp!=head);
-            }
+    public void print() {
+        Node temp = head;
+        if (head != null) {
+            do {
+                System.out.println(temp.val + "->");
+                temp = temp.next;
+            }while(temp!=head);
         }
+    }
 
-        private boolean isEmpty() {
-            return head == null;
-        }
+    private boolean isEmpty() {
+        return head == null;
     }
 }
